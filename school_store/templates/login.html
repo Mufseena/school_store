@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</head>
+<style>
+    .error {
+	color: #D8000C;
+	background-color:#e5d913;
+
+}
+</style>
+<body style = "background-color: #a4aaaa;">
+<div class="row" >
+    <div class="col-lg-3"></div>
+    <div  class="col-lg-3"style="margin-top:50px;background-color:white;margin-left:30px;border:2px solid grey;">
+        <h2 style="text-align:center;margin:10px;font-family: 'Times New Roman', serif;"><b>Login Form</b></h2><br>
+        <form action="login" method="post" style="height:300px;padding:20px">
+          {% csrf_token %}
+            <div class="col-25">
+               <label>Username</label>
+             </div>
+           <div class="col-75">
+          <input type="text" name="username" placeholder="Your username.."><br><br>
+           </div>
+            <div class="col-25">
+            <label>Password</label>
+            </div>
+            <div class="col-75">
+           <input type="password" name="password" placeholder="Your password.."><br><br>
+            </div>
+          <input type="submit" value="Login"  class="btn btn-warning"><br><br>
+          <a href ="/credentials/register" style="text-align:center;color:#e5d913;" class="btn btn-outline-dark">Register Here</a>
+        </form>
+    </div>
+</div>
+{% for msg in messages %}
+<h6 class="error">{{msg}}</h6>
+{% endfor %}
+</body>
+</html>

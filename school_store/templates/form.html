@@ -1,0 +1,166 @@
+{% load static %}
+<html>
+<head>
+   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+{% include 'header.html' %}
+{% block content %}
+<h2 style="text-align:center">Order Page</h2>
+<p style="text-align:center;font-size:30px;color:#f0e68c;font-family:Times New Roman, Times, serif"> Back-to-school season is just around the corner. Are you all set?</p>
+
+<div class="container">
+  <form action="message" method="post" >
+   {% csrf_token %}
+    <!--name-->
+  <div class="row">
+    <div class="col-25">
+      <label for="name">Name</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="name" name="name" placeholder="Your name.." required>
+    </div>
+  </div>
+
+    <!--DOB-->
+  <div class="row">
+    <div class="col-25">
+      <label for="DOB">Date of Birth</label>
+    </div>
+    <div class="col-75">
+      <input type="date" id="dob" name="dob" placeholder="Your DOB.." required>
+    </div>
+  </div>
+
+     <!--age-->
+  <div class="row">
+    <div class="col-25">
+      <label for="Age">Age</label>
+    </div>
+    <div class="col-75">
+      <input type="number" id="age" name="age" placeholder="Your age.." required>
+    </div>
+  </div>
+
+   <!--    gender-->
+    <div class="row">
+    <div class="col-25">
+      <label for="male">Gender</label>
+    </div>
+    <div class="col-75">
+      <input type="radio" id="male" name="gender" value="" required>
+     <label for="Male">Male</label><br>
+      <input type="radio" id="female" name="gender" value="" required>
+     <label for="Female">Female</label><br>
+    </div>
+  </div>
+
+   <!--phone number-->
+    <div class="row">
+    <div class="col-25">
+      <label for="Phone">Phone Number</label>
+    </div>
+    <div class="col-75">
+      <input type="tel" id="phone" name="phone"  pattern="[1-9]{1}[0-9]{9}"placeholder="Your phone number.." maxlength="10" required>
+    </div>
+  </div>
+
+
+     <!--Email-->
+  <div class="row">
+    <div class="col-25">
+      <label for="Email">E-mail</label>
+    </div>
+    <div class="col-75">
+      <input type="email" id="email" name="email" placeholder="Your email id.." required>
+    </div>
+  </div>
+
+     <!--address-->
+  <div class="row">
+    <div class="col-25">
+      <label for="Address">Address</label>
+    </div>
+    <div class="col-75">
+      <textarea id="address" name="address" placeholder="Write your address.." style="height:100px" required></textarea>
+    </div>
+  </div>
+
+    <!--departments AND courses!-->
+  <div class="row">
+    <div class="col-25">
+      <label for="Department">Departments</label>
+    </div>
+    <div class="col-75">
+      <select id="department" name="department" required>
+          <option value="" disabled selected>Select a dept..</option>
+          <optgroup label="Kinter Garden" data-max-options="2"></optgroup>
+            <option value="1">LKG</option>
+             <option value="2">UKG</option>
+          <optgroup label="Primary School"></optgroup>
+             <option value="3">1st Grade-5th Grade</option>
+             <option value="4">6th Grade-10th Grade</option>
+          <optgroup label="Secondary School"></optgroup>
+               <option value="5">Science</option>
+               <option value="6">Commerce</option>
+               <option value="7">Humanities</option>
+          <optgroup label="UG"></optgroup>
+               <option value="8">B-Tech</option>
+               <option value="9">BCA</option>
+               <option value="10">BBA</option>
+          <optgroup label="PG"></optgroup>
+                 <option value="11">M-Tech</option>
+                 <option value="12">MCA</option>
+                 <option value="13">MBA</option>
+       </select>
+    </div>
+  </div>
+
+    <!--purpose-->
+ <div class="row">
+    <div class="col-25">
+      <label for="Purposes">Purposes</label>
+    </div>
+    <div class="col-75">
+      <select id="purposes" name="purpose"  required>
+          <option value="" disabled selected>Select a purpose..</option>
+          <option value="1">For enquiry</option>
+          <option value="2">Place order</option>
+          <option value="3">Return</option>
+      </select>
+    </div>
+  </div>
+
+      <!--materials provide-->
+  <div class="row">
+    <div class="col-25">
+      <label>Materials Provide</label>
+    </div>
+    <div class="col-75">
+        <input type="checkbox" name="pen" value="">
+       <label>Pen</label><br>
+       <input type="checkbox"  name="pencil" value="">
+       <label>Pencil</label><br>
+       <input type="checkbox"  name="colors" value="Boat">
+       <label>Colors</label><br>
+        <input type="checkbox" name="notebook" value="Bike">
+       <label>Notebook</label><br>
+       <input type="checkbox"  name="papers" value="Car">
+       <label>Exam papers</label><br>
+    </div>
+  </div>
+      <br>
+  <div class="row">
+    <input type="submit" value="Submit" href="" style="margin-left:50%">
+  </div>
+  </form>
+</div>
+{% endblock %}
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
